@@ -22,7 +22,7 @@ Software bude uživateli dávat informace o tom jeho síti. Tyto informace budou
 - hostname
 - lokace
 - otevřené porty na ip adrese
-- reputace ip adresy (či se jedná o Tor exit node, VPN server, nahlášená zneužití, ...)
+- reputace ip adresy (jestli se jedná o Tor exit node, VPN server, nahlášená zneužití, ...)
 
 Dále bude mít uživatel možnost vytvořit widget na ploše, aby si tyto informace mohl snadno zobrazit
 
@@ -32,4 +32,8 @@ Tyto veřejné API jsou například:
 - https://ipv6-test.com/api/
 - https://ip-api.com/
 - https://metrics.torproject.org/rs.html
+
+Uživatel pak bude moct rozšířit výsledky, když zadá svůj klíč k placeným api. Tato možnost bude v nastavení a pokud klíč k api nebude zadán, tak bude možnost vypnuta.
+Mezi příklady těchto placených API patří:
 - https://www.abuseipdb.com/
+- https://developer.shodan.io/
