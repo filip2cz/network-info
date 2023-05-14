@@ -1,5 +1,5 @@
 # Funkční specifikace
-- verze: 1.0
+- verze: 1.1
 - datum: 14. května 2023
 - autor: Filip Komárek
 
@@ -46,6 +46,8 @@ Preferované služby a klíče pro api placených služeb si bude aplikace uklá
 Návrh vzhledu byl vytvořen. Barevná paleta byla vytvořena pomocí [coolors.co](https://coolors.co/181a1e-ece5f0-69dc9e-d64550)
 
 ![desiqn](design.png "design")
+
+Tento návrh je převážně ilustrační.
 
 ## Otevřené otázky
 ### Ukládání dat v konfiguračním souboru
