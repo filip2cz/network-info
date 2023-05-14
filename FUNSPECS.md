@@ -42,6 +42,11 @@ Tyto seznamy se mohou časem rozšířit na základě nových zajímavých api s
 
 Preferované služby a klíče pro api placených služeb si bude aplikace ukládat do souboru.
 
+## Vzhled software
+Návrh vzhledu byl vytvořen. Barevná paleta byla vytvořena pomocí [coolors.co](https://coolors.co/181a1e-ece5f0-69dc9e-d64550)
+
+![desiqn](design.png "design")
+
 ## Otevřené otázky
 ### Ukládání dat v konfiguračním souboru
 Zatím nebylo zcela vymyšleno, v jakém formátu budou ukládána data v konfiguračním souboru.
