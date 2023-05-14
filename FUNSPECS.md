@@ -1,6 +1,6 @@
 # Funkční specifikace
-- verze: 0.1
-- datum: 24. dubna 2023
+- verze: 1.0
+- datum: 14. května 2023
 - autor: Filip Komárek
 
 ## O tomto dokumentu
@@ -39,3 +39,9 @@ Mezi příklady těchto placených API patří:
 - https://developer.shodan.io/
 
 Tyto seznamy se mohou časem rozšířit na základě nových zajímavých api s dalšími informacemi.
+
+Preferované služby a klíče pro api placených služeb si bude aplikace ukládat do souboru.
+
+## Otevřené otázky
+### Ukládání dat v konfiguračním souboru
+Zatím nebylo zcela vymyšleno, v jakém formátu budou ukládána data v konfiguračním souboru.
