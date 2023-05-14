@@ -33,7 +33,9 @@ Tyto veřejné API jsou například:
 - https://ip-api.com/
 - https://metrics.torproject.org/rs.html
 
-Uživatel pak bude moct rozšířit výsledky, když zadá svůj klíč k placeným api. Tato možnost bude v nastavení a pokud klíč k api nebude zadán, tak bude možnost vypnuta.
+Uživatel pak bude moct rozšířit informace v aplikaci, když zadá svůj klíč k placeným api různých služeb. Tato možnost bude v nastavení a pokud klíč k api nebude zadán, tak bude možnost vypnuta.
 Mezi příklady těchto placených API patří:
 - https://www.abuseipdb.com/
 - https://developer.shodan.io/
+
+Tyto seznamy se mohou časem rozšířit na základě nových zajímavých api s dalšími informacemi.
