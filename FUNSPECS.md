@@ -1,6 +1,6 @@
 # Funkční specifikace
-- verze: 0.1
-- datum: 24. dubna 2023
+- verze: 1.1
+- datum: 14. května 2023
 - autor: Filip Komárek
 
 ## O tomto dokumentu
@@ -33,7 +33,22 @@ Tyto veřejné API jsou například:
 - https://ip-api.com/
 - https://metrics.torproject.org/rs.html
 
-Uživatel pak bude moct rozšířit výsledky, když zadá svůj klíč k placeným api. Tato možnost bude v nastavení a pokud klíč k api nebude zadán, tak bude možnost vypnuta.
+Uživatel pak bude moct rozšířit informace v aplikaci, když zadá svůj klíč k placeným api různých služeb. Tato možnost bude v nastavení a pokud klíč k api nebude zadán, tak bude možnost vypnuta.
 Mezi příklady těchto placených API patří:
 - https://www.abuseipdb.com/
 - https://developer.shodan.io/
+
+Tyto seznamy se mohou časem rozšířit na základě nových zajímavých api s dalšími informacemi.
+
+Preferované služby a klíče pro api placených služeb si bude aplikace ukládat do souboru.
+
+## Vzhled software
+Návrh vzhledu byl vytvořen. Barevná paleta byla vytvořena pomocí [coolors.co](https://coolors.co/181a1e-ece5f0-69dc9e-d64550)
+
+![desiqn](design.png "design")
+
+Tento návrh je převážně ilustrační.
+
+## Otevřené otázky
+### Ukládání dat v konfiguračním souboru
+Zatím nebylo zcela vymyšleno, v jakém formátu budou ukládána data v konfiguračním souboru.
