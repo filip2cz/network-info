@@ -10,7 +10,7 @@
 
         <Label Text="Version: 0.2-devel" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
         <Label Text="{Binding versionStatus}" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
-        <Label Text="This app is still in heavy development, bugs may occur" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
+        <Label Text="This app is still in heavy development, bugs may occur." HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
         
         <Button Text="Reload"
                 Clicked="RefreshButton_Clicked" />
@@ -20,23 +20,16 @@
         <Label Text="basic text" FontSize="16" Padding="30,0,30,0"/>
         -->
 
-        <Label Text="Public network" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Public network" FontSize="Title" Padding="30,10,30,0"/>
+
+        <Label Text="IPv4" FontSize="20" Padding="30,0,30,0"/>
+
         <Label FontSize="16" Padding="30,0,30,0">
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
                         <Span Text="Public IPv4: "/>
-                        <Span Text="{Binding Ipv4}" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label FontSize="16" Padding="30,0,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Public IPv6: "/>
-                        <Span Text="{Binding Ipv6}" FontAttributes="Bold"/>
+                        <Span Text="{Binding Ipv4}" FontAttributes="Bold" FontSize="16"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
@@ -46,6 +39,76 @@
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
+                        <Span Text="Country: "/>
+                        <Span Text="{Binding Country4}" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="ISP: "/>
+                        <Span Text="{Binding Isp4}" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="known VPN, TOR or PROXY: "/>
+                        <Span Text="{Binding Vpn4}" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Text="IPv6" FontSize="20" Padding="30,0,30,0"/>
+
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Public IPv6: "/>
+                        <Span Text="{Binding Ipv6}" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Country: "/>
+                        <Span Text="{Binding Country6}" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="ISP: "/>
+                        <Span Text="{Binding Isp6}" FontAttributes="Bold" FontSize="16"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="known VPN, TOR or PROXY: "/>
+                        <Span Text="{Binding Vpn6}" FontAttributes="Bold" FontSize="16"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
@@ -54,6 +117,9 @@
         <Label Text="Credits" FontSize="Title" Padding="30,10,30,10"/>
         <Label Text="Created by Filip Komárek" FontSize="16" Padding="30,0,30,0"/>
         <Label Text="https://github.com/filip2cz/network-info" FontSize="16" Padding="30,0,30,0"/>
+        <Label Text="Data are provided by:" FontSize="16" Padding="30,10,30,0"/>
+        <Label Text="https://ipv6-test.com/" FontSize="16" Padding="30,0,30,0"/>
+        <Label Text="https://ip-api.com/" FontSize="16" Padding="30,0,30,0"/>
     </StackLayout>
 
 </ContentPage>

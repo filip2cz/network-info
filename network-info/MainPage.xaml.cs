@@ -48,9 +48,90 @@ namespace network_info
                 OnPropertyChanged(nameof(versionStatus));
             }
         }
-
+        private string _country4;
+        public string Country4
+        {
+            get
+            {
+                return _country4;
+            }
+            set
+            {
+                _country4 = value;
+                OnPropertyChanged(nameof(Country4));
+            }
+        }
+        private string _country6;
+        public string Country6
+        {
+            get
+            {
+                return _country6;
+            }
+            set
+            {
+                _country6 = value;
+                OnPropertyChanged(nameof(Country6));
+            }
+        }
+        private string _isp4;
+        public string Isp4
+        {
+            get
+            {
+                return _isp4;
+            }
+            set
+            {
+                _isp4 = value;
+                OnPropertyChanged(nameof(Isp4));
+            }
+        }
+        private string _isp6;
+        public string Isp6
+        {
+            get
+            {
+                return _isp6;
+            }
+            set
+            {
+                _isp6 = value;
+                OnPropertyChanged(nameof(Isp6));
+            }
+        }
+        private string _vpn4;
+        public string Vpn4
+        {
+            get
+            {
+                return _vpn4;
+            }
+            set
+            {
+                _vpn4 = value;
+                OnPropertyChanged(nameof(Vpn4));
+            }
+        }
+        private string _vpn6;
+        public string Vpn6
+        {
+            get
+            {
+                return _vpn6;
+            }
+            set
+            {
+                _vpn6 = value;
+                OnPropertyChanged(nameof(Vpn6));
+            }
+        }
+        bool ipv4avaible = false;
+        bool ipv6avaible = false;
         public MainPage() {
             InitializeComponent();
+
+            // basic bool variables
             
             Debug.WriteLine("app started");
 
@@ -76,7 +157,8 @@ namespace network_info
             BindingContext = this;
             //MainThread.InvokeOnMainThreadAsync(() => Ipv4Function());
             //MainThread.InvokeOnMainThreadAsync(() => Ipv6Function());
-            
+            //MainThread.InvokeOnMainThreadAsync(() => IpInfoFunction());
+
             Debug.WriteLine("end of MainPage()");
         }
         private async Task UpdaterFunction()
@@ -119,7 +201,6 @@ namespace network_info
             string responseipv4 = string.Empty;
             
             int i = 0;
-            Ipv4 = "unknown";
             while (i < 3)
             {
                 using (WebClient client = new WebClient())
@@ -128,17 +209,19 @@ namespace network_info
                     {
                         responseipv4 = client.DownloadString(Ipv4Url);
                         Ipv4 = responseipv4;
-                        i = 5;
+                        ipv4avaible = true;
+                        i = 3;
                     }
                     catch (Exception ex)
                     {
                         Debug.WriteLine("IPv4 request failed");
                         Debug.WriteLine(ex);
-                        if (i < 5)
+                        i++;
+                        if (i < 3)
                         {
                             Debug.WriteLine("Trying IPv4 again");
                         }
-                        i++;
+                        Ipv4 = "unknown";
                     }
                 }
             }
@@ -158,7 +241,6 @@ namespace network_info
             string responseipv6 = string.Empty;
 
             int i = 0;
-            Ipv6 = "unknown";
             while (i < 3)
             {
                 using (WebClient client = new WebClient())
@@ -167,28 +249,198 @@ namespace network_info
                     {
                         responseipv6 = client.DownloadString(Ipv6Url);
                         Ipv6 = responseipv6;
-                        i = 5;
+                        ipv6avaible = true;
+                        i = 3;
                     }
                     catch (Exception ex)
                     {
                         Debug.WriteLine("IPv6 request failed");
                         Debug.WriteLine(ex);
                         i++;
-                        if (i < 5)
+                        if (i < 3)
                         {
                             Debug.WriteLine("Trying IPv6 again");
                         }
+                        Ipv6 = "unknown";
                     }
                 }
             }
             Debug.WriteLine("getting IPv6 done");
             Debug.WriteLine($"Ipv6 = {Ipv6}");
         }
+        public async Task IpInfoFunction()
+        {
+            Debug.WriteLine("getting info about IP started");
+            if (ipv4avaible)
+            {
+                Debug.WriteLine("starting Country4 request");
+                int i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            Country4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=country");
+                            i = 3;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Country4 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Country4 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying Country4 again");
+                            }
+                        }
+                    }
+                }
+                Debug.WriteLine("starting Isp4 request");
+                i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            Isp4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=isp");
+                            i = 3;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Isp4 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Isp4 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying Isp4 again");
+                            }
+                        }
+                    }
+                }
+                Debug.WriteLine("starting Vpn4 request");
+                i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            Vpn4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=proxy");
+                            i = 3;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Vpn4 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Vpn4 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying Vpn4 again");
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Country4 = "unknown";
+                Isp4 = "unknown";
+                Vpn4 = "unknown";
+            }
+            if (ipv6avaible)
+            {
+                Debug.WriteLine("starting Country6 request");
+                int i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            Country6 = client.DownloadString($"http://ip-api.com/line/{Ipv6}?fields=country");
+                            i = 3;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Country6 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Country6 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying Country6 again");
+                            }
+                        }
+                    }
+                }
+                Debug.WriteLine("starting Isp6 request");
+                i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            Isp6 = client.DownloadString($"http://ip-api.com/line/{Ipv6}?fields=isp");
+                            i = 3;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Isp6 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Isp6 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying Isp6 again");
+                            }
+                        }
+                    }
+                }
+                Debug.WriteLine("starting Vpn6 request");
+                i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            Vpn6 = client.DownloadString($"http://ip-api.com/line/{Ipv6}?fields=proxy");
+                            i = 3;
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Vpn6 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Vpn6 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying Vpn6 again");
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Country6 = "unknown";
+                Isp6 = "unknown";
+                Vpn6 = "unknown";
+            }
+            Debug.WriteLine("getting info about IP done");
+        }
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("reload button pressed");
             await Ipv4Function();
             await Ipv6Function();
+            await IpInfoFunction();
             await UpdaterFunction();
         }
     }

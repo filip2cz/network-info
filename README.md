@@ -1,7 +1,7 @@
 # network-info
 Mobile app, which gives informations about network.
 
-[![wakatime](https://wakatime.com/badge/github/filip2cz/network-info.svg?3)](https://wakatime.com/badge/github/filip2cz/network-info)
+[![wakatime](https://wakatime.com/badge/github/filip2cz/network-info.svg?4)](https://wakatime.com/badge/github/filip2cz/network-info)
 
 ### Acknowledgements
 Thanks [Mikuláš (Ur-Fault)](https://github.com/ur-fault) for help about basic knowlege how to use Xamarin
