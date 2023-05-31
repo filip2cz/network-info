@@ -119,26 +119,31 @@ namespace network_info
             string responseipv4 = string.Empty;
             
             int i = 0;
-            while (i < 5)
+            Ipv4 = "unknown";
+            while (i < 3)
             {
                 using (WebClient client = new WebClient())
                 {
                     try
                     {
                         responseipv4 = client.DownloadString(Ipv4Url);
+                        Ipv4 = responseipv4;
                         i = 5;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        Ipv4 = "unknown";
-                        Debug.WriteLine("Ipv4 = \"unknown\"");
+                        Debug.WriteLine("IPv4 request failed");
+                        Debug.WriteLine(ex);
+                        if (i < 5)
+                        {
+                            Debug.WriteLine("Trying IPv4 again");
+                        }
                         i++;
                     }
                 }
             }
             Debug.WriteLine("getting IPv4 done");
-            Ipv4 = responseipv4;
-            Debug.WriteLine("Ipv4 = ip");
+            Debug.WriteLine($"Ipv4 = {Ipv4}");
         }
         public async Task Ipv6Function()
         {
@@ -153,26 +158,31 @@ namespace network_info
             string responseipv6 = string.Empty;
 
             int i = 0;
-            while (i < 5)
+            Ipv6 = "unknown";
+            while (i < 3)
             {
                 using (WebClient client = new WebClient())
                 {
                     try
                     {
                         responseipv6 = client.DownloadString(Ipv6Url);
+                        Ipv6 = responseipv6;
                         i = 5;
                     }
                     catch (Exception ex)
                     {
-                        Ipv6 = "unknown";
-                        Debug.WriteLine("Ipv6 = \"unknown\"");
+                        Debug.WriteLine("IPv6 request failed");
+                        Debug.WriteLine(ex);
                         i++;
+                        if (i < 5)
+                        {
+                            Debug.WriteLine("Trying IPv6 again");
+                        }
                     }
                 }
             }
             Debug.WriteLine("getting IPv6 done");
-            Ipv6 = responseipv6;
-            Debug.WriteLine("Ipv6 = ip");
+            Debug.WriteLine($"Ipv6 = {Ipv6}");
         }
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
