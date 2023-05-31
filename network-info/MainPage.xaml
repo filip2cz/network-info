@@ -20,19 +20,29 @@
         <Label Text="basic text" FontSize="16" Padding="30,0,30,0"/>
         -->
 
-        <Label Text="About public ip" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Public network" FontSize="Title" Padding="30,10,30,10"/>
         <Label FontSize="16" Padding="30,0,30,0">
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
-                        <Span Text="Public IP: "/>
+                        <Span Text="Public IPv4: "/>
                         <Span Text="{Binding Ipv4}" FontAttributes="Bold"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label FontSize="16" Padding="30,0,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Public IPv6: "/>
+                        <Span Text="{Binding Ipv6}" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
 
-        <!--
+        <!-- -->
         <Label Text="Debug info" FontSize="Title" Padding="30,10,30,10"/>
         <Label FontSize="16" Padding="30,0,30,0">
             <Label.FormattedText>
@@ -44,20 +54,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        -->
-        
-        <!--
-        <Label FontSize="16" Padding="30,0,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Public IPv6: "/>
-                        <Span Text="{Binding Ipv6}" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        -->
+        <!-- -->
         <Label FontSize="16" Padding="30,0,30,0">
             <Label.FormattedText>
                 <FormattedString>

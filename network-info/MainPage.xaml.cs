@@ -75,17 +75,18 @@ namespace network_info
             };
 
             refreshButton.Clicked += RefreshButton_Clicked;
-            /*
-            Content = new StackLayout
-            {
-                Children = { refreshButton }
-            };*/
+            
+            //Content = new StackLayout
+            //{
+            //    Children = { refreshButton }
+            //};
 
             debugEvent = "button created";
 
             // get data
             BindingContext = this;
-            MainThread.InvokeOnMainThreadAsync(() => Ipv4Function());
+            //MainThread.InvokeOnMainThreadAsync(() => Ipv4Function());
+            //MainThread.InvokeOnMainThreadAsync(() => Ipv6Function());
 
             debugEvent = "end of MainPage()";
         }
@@ -101,7 +102,7 @@ namespace network_info
                 {
                     latestVersion = Int32.Parse(client.DownloadString("https://raw.githubusercontent.com/filip2cz/network-info/main/ver"));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }
@@ -125,55 +126,72 @@ namespace network_info
             debugEvent = "Ipv4 = \"getting data\"";
 
             // get IPv4
-            // this is temporary both IPv4 and IPv6
-            string Ipv4Url = "https://v4v6.ipv6-test.com/api/myip.php";
+            string Ipv4Url = "https://v4.ipv6-test.com/api/myip.php";
             string responseipv4 = string.Empty;
-
-            bool i = true;
-            while (i)
+            
+            int i = 0;
+            while (i < 5)
             {
                 using (WebClient client = new WebClient())
                 {
                     try
                     {
                         responseipv4 = client.DownloadString(Ipv4Url);
-                        i = false;
+                        i = 5;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
+                        Ipv4 = "unknown";
+                        debugEvent = "Ipv4 = \"unknown\"";
+                        i++;
                     }
                 }
             }
             debugEvent = "getting IPv4 done";
             Ipv4 = responseipv4;
             debugEvent = "Ipv4 = ip";
-            /*
-            else {
-                Ipv4 = "unknown";
-                debugEvent = "Ipv4 = \"unknown\"";
-            }
-            */
         }
         public async Task Ipv6Function()
         {
+
+            debugEvent = "Ipv6Function() started";
+
             Ipv6 = "getting data";
-            // zjištění a IPv6
-            HttpClient client = new HttpClient();
-            HttpResponseMessage responseipv6 = await client.GetAsync("https://v6.ipv6-test.com/api/myip.php");
-            if (responseipv6.IsSuccessStatusCode)
+
+            debugEvent = "Ipv6 = \"getting data\"";
+
+            // get IPv6
+            string Ipv6Url = "https://v6.ipv6-test.com/api/myip.php";
+            string responseipv6 = string.Empty;
+
+            int i = 0;
+            while (i < 5)
             {
-                Ipv6 = await responseipv6.Content.ReadAsStringAsync();
+                using (WebClient client = new WebClient())
+                {
+                    try
+                    {
+                        responseipv6 = client.DownloadString(Ipv6Url);
+                        i = 5;
+                    }
+                    catch (Exception ex)
+                    {
+                        Ipv6 = "unknown";
+                        debugEvent = "Ipv6 = \"unknown\"";
+                        i++;
+                    }
+                }
             }
-            else
-            {
-            Ipv6 = "unknown";
-            }
+            debugEvent = "getting IPv6 done";
+            Ipv6 = responseipv6;
+            debugEvent = "Ipv6 = ip";
         }
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
             // Volání funkce DataAsync pro načtení nových dat
             debugEvent = "reload button pressed";
             await Ipv4Function();
+            await Ipv6Function();
             await UpdaterFunction();
         }
     }
