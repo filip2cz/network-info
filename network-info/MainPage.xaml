@@ -9,6 +9,7 @@
         </Frame>
 
         <Label Text="Version: 0.1" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
+        <Label Text="{Binding versionStatus}" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
         <Label Text="This app is still in heavy development, bugs may occur" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
         
         <Button Text="Reload"

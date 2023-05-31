@@ -46,12 +46,28 @@ namespace network_info
                 OnPropertyChanged(nameof(debugEvent));
             }
         }
+        private string _versionStatus;
+        public string versionStatus
+        {
+            get
+            {
+                return _versionStatus;
+            }
+            set
+            {
+                _versionStatus = value;
+                OnPropertyChanged(nameof(versionStatus));
+            }
+        }
 
         public MainPage() {
             InitializeComponent();
 
             debugEvent = "app started";
-            
+
+            // check version
+            UpdaterFunction();
+
             // refresh button
             Button refreshButton = new Button
             {
@@ -73,11 +89,32 @@ namespace network_info
 
             debugEvent = "end of MainPage()";
         }
-        private async void RefreshButton_Clicked(object sender, EventArgs e)
+        private async Task UpdaterFunction()
         {
-            // Volání funkce DataAsync pro načtení nových dat
-            debugEvent = "reload button pressed";
-            await Ipv4Function();
+            debugEvent = "Checking version from server";
+            
+            int yourVersion = 1;
+            int latestVersion = yourVersion;
+            using (WebClient client = new WebClient())
+            {
+                try
+                {
+                    latestVersion = Int32.Parse(client.DownloadString("https://raw.githubusercontent.com/filip2cz/network-info/main/ver"));
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            if (yourVersion == latestVersion)
+            {
+                versionStatus = "You have latest version published on github.";
+            }
+            else
+            {
+                versionStatus = "You do not have latest version of app, consider update.";
+            }
+            
+            debugEvent = "Checking version from server done";
         }
         public async Task Ipv4Function() {
 
@@ -131,6 +168,13 @@ namespace network_info
             {
             Ipv6 = "unknown";
             }
+        }
+        private async void RefreshButton_Clicked(object sender, EventArgs e)
+        {
+            // Volání funkce DataAsync pro načtení nových dat
+            debugEvent = "reload button pressed";
+            await Ipv4Function();
+            await UpdaterFunction();
         }
     }
 }
