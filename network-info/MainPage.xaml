@@ -9,13 +9,15 @@
         </Frame>
 
         <Label Text="Version: 0.1" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
-        <Label Text="This app is still in heavy development, bug may occur" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
+        <Label Text="This app is still in heavy development, bugs may occur" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
         
         <Button Text="Reload"
                 Clicked="RefreshButton_Clicked" />
         
+        <!--
         <Label Text="Local network" FontSize="Title" Padding="30,10,30,10"/>
         <Label Text="basic text" FontSize="16" Padding="30,0,30,0"/>
+        -->
 
         <Label Text="About public ip" FontSize="Title" Padding="30,10,30,10"/>
         <Label FontSize="16" Padding="30,0,30,0">
