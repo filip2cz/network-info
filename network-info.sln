@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "network-info.Android", "network-info.Android\network-info.Android.csproj", "{7F22F666-2C7F-4CBB-AD70-9D079C40A508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "network-info", "network-info\network-info.csproj", "{F1A7E97B-7AFD-4D67-B6BB-71DB0E89A89F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "network-info", "network-info\network-info.csproj", "{F1A7E97B-7AFD-4D67-B6BB-71DB0E89A89F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
