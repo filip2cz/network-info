@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using System.Net.Http;
 using Xamarin.Essentials;
 using System.Net;
+using System.Diagnostics;
+using System.Xml;
 
 namespace network_info
 {
@@ -33,19 +35,6 @@ namespace network_info
                 OnPropertyChanged(nameof(Ipv6));
             }
         }
-        private string _debugEvent;
-        public string debugEvent
-        {
-            get
-            {
-                return _debugEvent;
-            }
-            set
-            {
-                _debugEvent = value;
-                OnPropertyChanged(nameof(debugEvent));
-            }
-        }
         private string _versionStatus;
         public string versionStatus
         {
@@ -62,8 +51,8 @@ namespace network_info
 
         public MainPage() {
             InitializeComponent();
-
-            debugEvent = "app started";
+            
+            Debug.WriteLine("app started");
 
             // check version
             UpdaterFunction();
@@ -81,19 +70,19 @@ namespace network_info
             //    Children = { refreshButton }
             //};
 
-            debugEvent = "button created";
+            Debug.WriteLine("button created");
 
             // get data
             BindingContext = this;
             //MainThread.InvokeOnMainThreadAsync(() => Ipv4Function());
             //MainThread.InvokeOnMainThreadAsync(() => Ipv6Function());
-
-            debugEvent = "end of MainPage()";
+            
+            Debug.WriteLine("end of MainPage()");
         }
         private async Task UpdaterFunction()
         {
-            debugEvent = "Checking version from server";
-            
+            Debug.WriteLine("Checking version from server");
+
             int yourVersion = 1;
             int latestVersion = yourVersion;
             using (WebClient client = new WebClient())
@@ -114,16 +103,16 @@ namespace network_info
             {
                 versionStatus = "You do not have latest version of app, consider update.";
             }
-            
-            debugEvent = "Checking version from server done";
+
+            Debug.WriteLine("Checking version from server done");
         }
         public async Task Ipv4Function() {
-
-            debugEvent = "Ipv4Function() started";
             
-            Ipv4 = "getting data";
+            Debug.WriteLine("Ipv4Function() started");
 
-            debugEvent = "Ipv4 = \"getting data\"";
+            Ipv4 = "getting data";
+            
+            Debug.WriteLine("Ipv4 = \"getting data\"");
 
             // get IPv4
             string Ipv4Url = "https://v4.ipv6-test.com/api/myip.php";
@@ -142,23 +131,22 @@ namespace network_info
                     catch (Exception)
                     {
                         Ipv4 = "unknown";
-                        debugEvent = "Ipv4 = \"unknown\"";
+                        Debug.WriteLine("Ipv4 = \"unknown\"");
                         i++;
                     }
                 }
             }
-            debugEvent = "getting IPv4 done";
+            Debug.WriteLine("getting IPv4 done");
             Ipv4 = responseipv4;
-            debugEvent = "Ipv4 = ip";
+            Debug.WriteLine("Ipv4 = ip");
         }
         public async Task Ipv6Function()
         {
-
-            debugEvent = "Ipv6Function() started";
+            Debug.WriteLine("Ipv6Function() started");
 
             Ipv6 = "getting data";
-
-            debugEvent = "Ipv6 = \"getting data\"";
+            
+            Debug.WriteLine("Ipv6 = \"getting data\"");
 
             // get IPv6
             string Ipv6Url = "https://v6.ipv6-test.com/api/myip.php";
@@ -177,19 +165,18 @@ namespace network_info
                     catch (Exception ex)
                     {
                         Ipv6 = "unknown";
-                        debugEvent = "Ipv6 = \"unknown\"";
+                        Debug.WriteLine("Ipv6 = \"unknown\"");
                         i++;
                     }
                 }
             }
-            debugEvent = "getting IPv6 done";
+            Debug.WriteLine("getting IPv6 done");
             Ipv6 = responseipv6;
-            debugEvent = "Ipv6 = ip";
+            Debug.WriteLine("Ipv6 = ip");
         }
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
-            // Volání funkce DataAsync pro načtení nových dat
-            debugEvent = "reload button pressed";
+            Debug.WriteLine("reload button pressed");
             await Ipv4Function();
             await Ipv6Function();
             await UpdaterFunction();
