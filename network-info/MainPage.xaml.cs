@@ -16,21 +16,27 @@ namespace network_info
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private string _ipv4;
-        public string Ipv4 {
-            get {
+        public string Ipv4
+        {
+            get
+            {
                 return _ipv4;
             }
-            set {
+            set
+            {
                 _ipv4 = value;
                 OnPropertyChanged(nameof(Ipv4));
             }
         }
         private string _ipv6;
-        public string Ipv6 {
-            get {
+        public string Ipv6
+        {
+            get
+            {
                 return _ipv6;
             }
-            set {
+            set
+            {
                 _ipv6 = value;
                 OnPropertyChanged(nameof(Ipv6));
             }
@@ -128,11 +134,12 @@ namespace network_info
         }
         bool ipv4avaible = false;
         bool ipv6avaible = false;
-        public MainPage() {
+        public MainPage()
+        {
             InitializeComponent();
 
             // basic bool variables
-            
+
             Debug.WriteLine("app started");
 
             // check version
@@ -145,7 +152,7 @@ namespace network_info
             };
 
             refreshButton.Clicked += RefreshButton_Clicked;
-            
+
             //Content = new StackLayout
             //{
             //    Children = { refreshButton }
@@ -188,18 +195,19 @@ namespace network_info
 
             Debug.WriteLine("Checking version from server done");
         }
-        public async Task Ipv4Function() {
-            
+        public async Task Ipv4Function()
+        {
+
             Debug.WriteLine("Ipv4Function() started");
 
             Ipv4 = "getting data";
-            
+
             Debug.WriteLine("Ipv4 = \"getting data\"");
 
             // get IPv4
             string Ipv4Url = "https://v4.ipv6-test.com/api/myip.php";
             string responseipv4 = string.Empty;
-            
+
             int i = 0;
             while (i < 3)
             {
@@ -233,7 +241,7 @@ namespace network_info
             Debug.WriteLine("Ipv6Function() started");
 
             Ipv6 = "getting data";
-            
+
             Debug.WriteLine("Ipv6 = \"getting data\"");
 
             // get IPv6
