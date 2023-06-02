@@ -249,7 +249,8 @@ namespace network_info
             string responseipv6 = string.Empty;
 
             int i = 0;
-            while (i < 3)
+            int maxTries = 1;
+            while (i < maxTries)
             {
                 using (WebClient client = new WebClient())
                 {
@@ -258,14 +259,14 @@ namespace network_info
                         responseipv6 = client.DownloadString(Ipv6Url);
                         Ipv6 = responseipv6;
                         ipv6avaible = true;
-                        i = 3;
+                        i = maxTries;
                     }
                     catch (Exception ex)
                     {
                         Debug.WriteLine("IPv6 request failed");
                         Debug.WriteLine(ex);
                         i++;
-                        if (i < 3)
+                        if (i < maxTries)
                         {
                             Debug.WriteLine("Trying IPv6 again");
                         }
