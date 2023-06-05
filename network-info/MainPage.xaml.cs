@@ -10,7 +10,6 @@ using Xamarin.Essentials;
 using System.Net;
 using System.Diagnostics;
 using System.Xml;
-using System.Text.Json;
 
 namespace network_info
 {
@@ -283,127 +282,128 @@ namespace network_info
         public async Task IpInfoFunction()
         {
             Debug.WriteLine("getting info about IP started");
-            if (ipv4avaible)
-            {
-                Debug.WriteLine("getting data about IPv4");
-                int i = 0;
-                while (i < 3)
-                {
-                    using (WebClient client = new WebClient())
-                    {
-                        try
-                        {
-                            json4 = client.DownloadString($"http://ip-api.com/json/{Ipv4}?fields=country,isp,proxy");
-                            
-                            Debug.WriteLine("request done");
-                            Debug.WriteLine(json4);
 
-                            var jsonObject4 = JsonSerializer.Deserialize<dynamic>(json4);
-
-                            Debug.WriteLine("jsonObject4:");
-                            //Debug.WriteLine(jsonObject4.ToString());
-
-                            Debug.WriteLine("JSON parsing done");/*
-                            Country4 = jsonObject4.country;
-                            Isp4 = jsonObject4.isp;
-                            Vpn4 = jsonObject4.proxy;*/
-                            Debug.WriteLine("Variables set properly");
-
-                            i = 3;
-                            Debug.WriteLine("Geting data about IPv4 done");
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("Data about IPv4 request failed");
-                            Debug.WriteLine(ex);
-                            i++;
-                            Country4 = "unknown";
-                            Isp4 = "unknown";
-                            Vpn4 = "unknown";
-                            if (i < 3)
-                            {
-                                Debug.WriteLine("Trying IPv4 data again");
-                            }
-                        }
-                    }
-                }
-                /*
-                Debug.WriteLine("starting Country4 request");
-                int i = 0;
-                while (i < 3)
-                {
-                    using (WebClient client = new WebClient())
+            
+        if (ipv4avaible)
+        {
+            Debug.WriteLine("getting data about IPv4");
+                /*int i = 0;
+                    while (i < 3)
                     {
-                        try
-                        {
-                            Country4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=country");
-                            Country4 = Country4.Replace("\n", "").Replace("\r", "");
-                            i = 3;
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("Country4 request failed");
-                            Debug.WriteLine(ex);
-                            i++;
-                            Country4 = "unknown";
-                            if (i < 3)
+                            using (WebClient client = new WebClient())
                             {
-                                Debug.WriteLine("Trying Country4 again");
+                                try
+                                {
+                                    json4 = client.DownloadString($"http://ip-api.com/json/{Ipv4}?fields=country,isp,proxy");
+
+                                    Debug.WriteLine("request done");
+                                    Debug.WriteLine(json4);
+
+                                    var jsonObject4 = JsonSerializer.Deserialize<dynamic>(json4);
+
+                                    Debug.WriteLine("jsonObject4:");
+                                    //Debug.WriteLine(jsonObject4);
+
+                                    Debug.WriteLine("JSON parsing done");
+                                    Country4 = jsonObject4.country;
+                                    Isp4 = jsonObject4.isp;
+                                    Vpn4 = jsonObject4.proxy;
+                                    Debug.WriteLine("Variables set properly");
+
+                                    i = 3;
+                                    Debug.WriteLine("Geting data about IPv4 done");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Debug.WriteLine("Data about IPv4 request failed");
+                                    Debug.WriteLine(ex);
+                                    i++;
+                                    Country4 = "unknown";
+                                    Isp4 = "unknown";
+                                    Vpn4 = "unknown";
+                                    if (i < 3)
+                                    {
+                                        Debug.WriteLine("Trying IPv4 data again");
+                                    }
+                                }
                             }
-                        }
-                    }
-                }
-                Debug.WriteLine("starting Isp4 request");
-                i = 0;
-                while (i < 3)
-                {
-                    using (WebClient client = new WebClient())
-                    {
-                        try
-                        {
-                            Isp4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=isp");
-                            Isp4 = Isp4.Replace("\n", "").Replace("\r", "");
-                            i = 3;
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("Isp4 request failed");
-                            Debug.WriteLine(ex);
-                            i++;
-                            Isp4 = "unknown";
-                            if (i < 3)
-                            {
-                                Debug.WriteLine("Trying Isp4 again");
-                            }
-                        }
-                    }
-                }
-                Debug.WriteLine("starting Vpn4 request");
-                i = 0;
-                while (i < 3)
-                {
-                    using (WebClient client = new WebClient())
-                    {
-                        try
-                        {
-                            Vpn4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=proxy");
-                            Vpn4 = Vpn4.Replace("\n", "").Replace("\r", "");
-                            i = 3;
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine("Vpn4 request failed");
-                            Debug.WriteLine(ex);
-                            i++;
-                            Vpn4 = "unknown";
-                            if (i < 3)
-                            {
-                                Debug.WriteLine("Trying Vpn4 again");
-                            }
-                        }
-                    }
                 }*/
+                Debug.WriteLine("starting Country4 request");
+            int i = 0;
+            while (i < 3)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    try
+                    {
+                        Country4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=country");
+                        Country4 = Country4.Replace("\n", "").Replace("\r", "");
+                        i = 3;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Country4 request failed");
+                        Debug.WriteLine(ex);
+                        i++;
+                        Country4 = "unknown";
+                        if (i < 3)
+                        {
+                            Debug.WriteLine("Trying Country4 again");
+                        }
+                    }
+                }
             }
+            Debug.WriteLine("starting Isp4 request");
+            i = 0;
+            while (i < 3)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    try
+                    {
+                        Isp4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=isp");
+                        Isp4 = Isp4.Replace("\n", "").Replace("\r", "");
+                        i = 3;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Isp4 request failed");
+                        Debug.WriteLine(ex);
+                        i++;
+                        Isp4 = "unknown";
+                        if (i < 3)
+                        {
+                            Debug.WriteLine("Trying Isp4 again");
+                        }
+                    }
+                }
+            }
+            Debug.WriteLine("starting Vpn4 request");
+            i = 0;
+            while (i < 3)
+            {
+                using (WebClient client = new WebClient())
+                {
+                    try
+                    {
+                        Vpn4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=proxy");
+                        Vpn4 = Vpn4.Replace("\n", "").Replace("\r", "");
+                        i = 3;
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Vpn4 request failed");
+                        Debug.WriteLine(ex);
+                        i++;
+                        Vpn4 = "unknown";
+                        if (i < 3)
+                        {
+                            Debug.WriteLine("Trying Vpn4 again");
+                        }
+                    }
+                }
+            }
+        }
             else
             {
                 Debug.WriteLine("getting data about IPv4 skipped because IPv4 is not avaible");
@@ -415,7 +415,6 @@ namespace network_info
             if (ipv6avaible)
             {
                 Debug.WriteLine("getting data about IPv6");
-                /*
                 Debug.WriteLine("starting Country6 request");
                 int i = 0;
                 while (i < 3)
@@ -491,7 +490,6 @@ namespace network_info
                         }
                     }
                 }
-                */
             }
             else
             {
