@@ -291,6 +291,7 @@ namespace network_info
                         try
                         {
                             Country4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=country");
+                            Country4 = Country4.Replace("\n", "").Replace("\r", "");
                             i = 3;
                         }
                         catch (Exception ex)
@@ -315,6 +316,7 @@ namespace network_info
                         try
                         {
                             Isp4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=isp");
+                            Isp4 = Isp4.Replace("\n", "").Replace("\r", "");
                             i = 3;
                         }
                         catch (Exception ex)
@@ -339,6 +341,7 @@ namespace network_info
                         try
                         {
                             Vpn4 = client.DownloadString($"http://ip-api.com/line/{Ipv4}?fields=proxy");
+                            Vpn4 = Vpn4.Replace("\n", "").Replace("\r", "");
                             i = 3;
                         }
                         catch (Exception ex)
@@ -372,6 +375,7 @@ namespace network_info
                         try
                         {
                             Country6 = client.DownloadString($"http://ip-api.com/line/{Ipv6}?fields=country");
+                            Country6 = Country6.Replace("\n", "").Replace("\r", "");
                             i = 3;
                         }
                         catch (Exception ex)
@@ -396,6 +400,7 @@ namespace network_info
                         try
                         {
                             Isp6 = client.DownloadString($"http://ip-api.com/line/{Ipv6}?fields=isp");
+                            Isp6 = Isp6.Replace("\n", "").Replace("\r", "");
                             i = 3;
                         }
                         catch (Exception ex)
@@ -420,6 +425,7 @@ namespace network_info
                         try
                         {
                             Vpn6 = client.DownloadString($"http://ip-api.com/line/{Ipv6}?fields=proxy");
+                            Vpn6 = Vpn6.Replace("\n", "").Replace("\r", "");
                             i = 3;
                         }
                         catch (Exception ex)
