@@ -10,6 +10,7 @@ using Xamarin.Essentials;
 using System.Net;
 using System.Diagnostics;
 using System.Xml;
+using System.Text.Json;
 
 namespace network_info
 {
@@ -134,6 +135,8 @@ namespace network_info
         }
         bool ipv4avaible = false;
         bool ipv6avaible = false;
+        string json4 = string.Empty;
+        string json6 = string.Empty;
         public MainPage()
         {
             InitializeComponent();
@@ -282,6 +285,49 @@ namespace network_info
             Debug.WriteLine("getting info about IP started");
             if (ipv4avaible)
             {
+                Debug.WriteLine("getting data about IPv4");
+                int i = 0;
+                while (i < 3)
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        try
+                        {
+                            json4 = client.DownloadString($"http://ip-api.com/json/{Ipv4}?fields=country,isp,proxy");
+                            
+                            Debug.WriteLine("request done");
+                            Debug.WriteLine(json4);
+
+                            var jsonObject4 = JsonSerializer.Deserialize<dynamic>(json4);
+
+                            Debug.WriteLine("jsonObject4:");
+                            //Debug.WriteLine(jsonObject4.ToString());
+
+                            Debug.WriteLine("JSON parsing done");/*
+                            Country4 = jsonObject4.country;
+                            Isp4 = jsonObject4.isp;
+                            Vpn4 = jsonObject4.proxy;*/
+                            Debug.WriteLine("Variables set properly");
+
+                            i = 3;
+                            Debug.WriteLine("Geting data about IPv4 done");
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine("Data about IPv4 request failed");
+                            Debug.WriteLine(ex);
+                            i++;
+                            Country4 = "unknown";
+                            Isp4 = "unknown";
+                            Vpn4 = "unknown";
+                            if (i < 3)
+                            {
+                                Debug.WriteLine("Trying IPv4 data again");
+                            }
+                        }
+                    }
+                }
+                /*
                 Debug.WriteLine("starting Country4 request");
                 int i = 0;
                 while (i < 3)
@@ -356,16 +402,20 @@ namespace network_info
                             }
                         }
                     }
-                }
+                }*/
             }
             else
             {
+                Debug.WriteLine("getting data about IPv4 skipped because IPv4 is not avaible");
                 Country4 = "unknown";
                 Isp4 = "unknown";
                 Vpn4 = "unknown";
             }
+            
             if (ipv6avaible)
             {
+                Debug.WriteLine("getting data about IPv6");
+                /*
                 Debug.WriteLine("starting Country6 request");
                 int i = 0;
                 while (i < 3)
@@ -441,9 +491,11 @@ namespace network_info
                         }
                     }
                 }
+                */
             }
             else
             {
+                Debug.WriteLine("getting data about IPv6 skipped because IPv6 is not avaible");
                 Country6 = "unknown";
                 Isp6 = "unknown";
                 Vpn6 = "unknown";
