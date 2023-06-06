@@ -174,7 +174,7 @@ namespace network_info
         {
             Debug.WriteLine("Checking version from server");
 
-            int yourVersion = 1;
+            int yourVersion = 2;
             int latestVersion = yourVersion;
             using (WebClient client = new WebClient())
             {
