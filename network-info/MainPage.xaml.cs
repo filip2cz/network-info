@@ -69,6 +69,19 @@ namespace network_info
                 OnPropertyChanged(nameof(Ipv6Local));
             }
         }
+        private string _connectiontype;
+        public string ConnectionType
+        {
+            get
+            {
+                return _connectiontype;
+            }
+            set
+            {
+                _connectiontype = value;
+                OnPropertyChanged(nameof(ConnectionType));
+            }
+        }
         private string _versionStatus;
         public string versionStatus
         {
@@ -225,6 +238,7 @@ namespace network_info
 
             Debug.WriteLine("Checking version from server done");
         }
+        // thanks chatgpt for GetLocalIPv* functions
         public static string GetLocalIPv4()
         {
             string ipAddress = null;
@@ -569,8 +583,23 @@ namespace network_info
             Debug.WriteLine("reload button pressed");
             Ipv4Local = GetLocalIPv4();
             Ipv6Local = GetLocalIPv6();
-            await Ipv4Function();
-            await Ipv6Function();
+            ConnectionType = "work in progress";
+            if (Ipv4Local == null)
+            {
+                Ipv4 = "unknown";
+            }
+            else
+            {
+                await Ipv4Function();
+            }
+            if (Ipv6Local == null)
+            {
+                Ipv6 = "unknown";
+            }
+            else
+            {
+                await Ipv6Function();
+            }
             await IpInfoFunction();
             await UpdaterFunction();
         }

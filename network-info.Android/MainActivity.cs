@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Content;
+using Android.Net;
 
 namespace network_info.Droid
 {
@@ -24,5 +26,25 @@ namespace network_info.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        // thanks ChatGPT for help with this one
+        public static string GetConnectionType(Context context)
+        {
+            ConnectivityManager connectivityManager = (ConnectivityManager)context.GetSystemService(Context.ConnectivityService);
+            NetworkInfo activeNetwork = connectivityManager.ActiveNetworkInfo;
+
+            if (activeNetwork != null && activeNetwork.IsConnected)
+            {
+                if (activeNetwork.Type == ConnectivityType.Wifi)
+                {
+                    return "Wi-Fi";
+                }
+                else if (activeNetwork.Type == ConnectivityType.Mobile)
+                {
+                    return "Cellular data";
+                }
+            }
+            return "Disconnected";
+        }
     }
+
 }

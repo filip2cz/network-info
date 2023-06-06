@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage 
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="network_info.MainPage">
+             x:Class="network_info.MainPage"
+             xmlns:local="clr-namespace:MyApp">
     <ScrollView>
         <Grid>
             <StackLayout>
@@ -35,6 +37,17 @@
                             <FormattedString.Spans>
                                 <Span Text="Local IPv6: "/>
                                 <Span Text="{Binding Ipv6Local}" FontAttributes="Bold" FontSize="16"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FontSize="16" Padding="30,0,30,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Connection type: "/>
+                                <Span Text="{Binding connectionType}" FontAttributes="Bold" FontSize="16"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
