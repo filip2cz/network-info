@@ -10,6 +10,8 @@ using Xamarin.Essentials;
 using System.Net;
 using System.Diagnostics;
 using System.Xml;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 
 namespace network_info
 {
@@ -28,6 +30,19 @@ namespace network_info
                 OnPropertyChanged(nameof(Ipv4));
             }
         }
+        private string _ipv4Local;
+        public string Ipv4Local
+        {
+            get
+            {
+                return _ipv4Local;
+            }
+            set
+            {
+                _ipv4Local = value;
+                OnPropertyChanged(nameof(Ipv4Local));
+            }
+        }
         private string _ipv6;
         public string Ipv6
         {
@@ -39,6 +54,19 @@ namespace network_info
             {
                 _ipv6 = value;
                 OnPropertyChanged(nameof(Ipv6));
+            }
+        }
+        private string _ipv6Local;
+        public string Ipv6Local
+        {
+            get
+            {
+                return _ipv6Local;
+            }
+            set
+            {
+                _ipv6Local = value;
+                OnPropertyChanged(nameof(Ipv6Local));
             }
         }
         private string _versionStatus;
@@ -196,6 +224,42 @@ namespace network_info
             }
 
             Debug.WriteLine("Checking version from server done");
+        }
+        public static string GetLocalIPv4()
+        {
+            string ipAddress = null;
+            foreach (var netInterface in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                foreach (var addressInfo in netInterface.GetIPProperties().UnicastAddresses)
+                {
+                    if (addressInfo.Address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        ipAddress = addressInfo.Address.ToString();
+                        break;
+                    }
+                }
+                if (ipAddress != null)
+                    break;
+            }
+            return ipAddress;
+        }
+        public static string GetLocalIPv6()
+        {
+            string ipAddress = null;
+            foreach (var netInterface in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                foreach (var addressInfo in netInterface.GetIPProperties().UnicastAddresses)
+                {
+                    if (addressInfo.Address.AddressFamily == AddressFamily.InterNetworkV6)
+                    {
+                        ipAddress = addressInfo.Address.ToString();
+                        break;
+                    }
+                }
+                if (ipAddress != null)
+                    break;
+            }
+            return ipAddress;
         }
         public async Task Ipv4Function()
         {
@@ -503,6 +567,8 @@ namespace network_info
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("reload button pressed");
+            Ipv4Local = GetLocalIPv4();
+            Ipv6Local = GetLocalIPv6();
             await Ipv4Function();
             await Ipv6Function();
             await IpInfoFunction();

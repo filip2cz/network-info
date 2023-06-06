@@ -9,17 +9,36 @@
                     <Label Text="Network Info" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                 </Frame>
 
-                <Label Text="Version: 0.2" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
+                <Label Text="Version: 0.3-devel" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
                 <Label Text="{Binding versionStatus}" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
                 <Label Text="This app is still in heavy development, bugs may occur." HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
 
                 <Button Text="Reload"
                 Clicked="RefreshButton_Clicked" />
 
-                <!--
                 <Label Text="Local network" FontSize="Title" Padding="30,10,30,10"/>
-                <Label Text="basic text" FontSize="16" Padding="30,0,30,0"/>
-                -->
+
+                <Label FontSize="16" Padding="30,0,30,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Local IPv4: "/>
+                                <Span Text="{Binding Ipv4Local}" FontAttributes="Bold" FontSize="16"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FontSize="16" Padding="30,0,30,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Local IPv6: "/>
+                                <Span Text="{Binding Ipv6Local}" FontAttributes="Bold" FontSize="16"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
                 <Label Text="Public network" FontSize="Title" Padding="30,10,30,0"/>
 
