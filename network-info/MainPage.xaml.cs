@@ -229,7 +229,7 @@ namespace network_info
             }
             if (yourVersion == latestVersion)
             {
-                versionStatus = "You have latest version published on github.";
+                versionStatus = "You have latest version.";
             }
             else
             {
