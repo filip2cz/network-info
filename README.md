@@ -1,6 +1,8 @@
 # network-info
 Mobile app, which gives informations about network.
 
+## Download: https://github.com/filip2cz/network-info/releases
+
 [![wakatime](https://wakatime.com/badge/github/filip2cz/network-info.svg?7)](https://wakatime.com/badge/github/filip2cz/network-info)
 
 ### Acknowledgements
