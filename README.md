@@ -3,7 +3,7 @@ Mobile app, which gives informations about network.
 
 ## Download: https://github.com/filip2cz/network-info/releases
 
-[![wakatime](https://wakatime.com/badge/github/filip2cz/network-info.svg?7)](https://wakatime.com/badge/github/filip2cz/network-info)
+[![wakatime](https://wakatime.com/badge/github/filip2cz/network-info.svg?8)](https://wakatime.com/badge/github/filip2cz/network-info)
 
 ### Acknowledgements
 Thanks [Mikuláš (Ur-Fault)](https://github.com/ur-fault) for help about basic knowlege how to use Xamarin
