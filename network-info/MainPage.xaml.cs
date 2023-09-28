@@ -53,11 +53,16 @@ namespace network_info
             }
         }
         private string _versionStatus;
-        public string VersionStatus {
-            get => _versionStatus;
-            set {
+        public string versionStatus
+        {
+            get
+            {
+                return _versionStatus;
+            }
+            set
+            {
                 _versionStatus = value;
-                OnPropertyChanged(nameof(VersionStatus));
+                OnPropertyChanged(nameof(versionStatus));
             }
         }
         private string _country4;
@@ -136,7 +141,7 @@ namespace network_info
         private async Task UpdaterFunction() {
             Debug.WriteLine("Checking version from server");
 
-            int yourVersion = 3;
+            int yourVersion = 4;
             int latestVersion = yourVersion;
             using (WebClient client = new WebClient()) {
                 try {
@@ -146,8 +151,14 @@ namespace network_info
                     // ignored
                 }
             }
-            VersionStatus = yourVersion == latestVersion ? "You have latest version." : "You do not have latest version of app, consider update.";
-
+            if (yourVersion == latestVersion)
+            {
+                versionStatus = "You have latest version.";
+            }
+            else
+            {
+                versionStatus = "You do not have latest version of app, consider update.";
+            }
             Debug.WriteLine("Checking version from server done");
         }
 

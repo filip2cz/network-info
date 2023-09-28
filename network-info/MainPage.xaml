@@ -10,7 +10,7 @@
                     <Label Text="Network Info" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                 </Frame>
 
-                <Label Text="Version: 0.3" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
+                <Label Text="Version: 0.4" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
                 <Label Text="{Binding versionStatus}" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
                 <Label Text="This app is still in heavy development, bugs may occur." HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
 
@@ -40,12 +40,13 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-
+    
+                
                 <Label FontSize="16" Padding="30,0,30,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Connection type: "/>
+                                <!--<Span Text="Connection type: "/>-->
                                 <Span Text="{Binding connectionType}" FontAttributes="Bold" FontSize="16"/>
                             </FormattedString.Spans>
                         </FormattedString>
