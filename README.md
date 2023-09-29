@@ -1,9 +1,13 @@
 # network-info
 Mobile app, which gives informations about network.
 
-## Download: https://github.com/filip2cz/network-info/releases
-
 [![wakatime](https://wakatime.com/badge/github/filip2cz/network-info.svg?8)](https://wakatime.com/badge/github/filip2cz/network-info)
+
+## Download
+
+[![Google Play](https://raw.githubusercontent.com/filip2cz/network-info/main/assets/badges/googleplay.png)](https://play.google.com/store/apps/details?id=eu.fkomarek.network_info)
+
+[![APK file](https://raw.githubusercontent.com/filip2cz/network-info/main/assets/badges/apk.png)](https://github.com/filip2cz/network-info/releases/download/v0.4/eu.fkomarek.network_info.apk)
 
 ### Acknowledgements
 Thanks [Mikuláš (Ur-Fault)](https://github.com/ur-fault) for help about basic knowlege how to use Xamarin
