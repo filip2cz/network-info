@@ -16,4 +16,4 @@ Thanks to the people at reddit: [https://www.reddit.com/r/Xamarin/comments/13wrd
 
 ### Privacy
 
-Everything (just one line) is in the privacy.md file
+Everything (just one line) is in the [PRIVACY.md](https://github.com/filip2cz/network-info/blob/main/PRIVACY.md) file
