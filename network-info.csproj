@@ -41,6 +41,7 @@
 		<PackageProjectUrl>https://network_info.fkomarek.eu/</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/filip2cz/network-info.git</RepositoryUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
