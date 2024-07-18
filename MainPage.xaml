@@ -39,17 +39,18 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-
+                <!--
                 <Label FontSize="16" Padding="30,0,30,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="Connection type: "/>
-                                <Span Text="" FontAttributes="Bold" FontSize="16" x:Name="connectionType"/>
+                                <Span Text="" FontAttributes="Bold" FontSize="16" x:Name="ConnectionType"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                -->
 
                 <Label Text="Public network" FontSize="Title" Padding="30,10,30,0"/>
 
