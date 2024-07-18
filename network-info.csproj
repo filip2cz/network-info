@@ -38,6 +38,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<Title>Network Info</Title>
 		<Authors>Filip Komárek</Authors>
+		<PackageProjectUrl>https://network_info.fkomarek.eu/</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
