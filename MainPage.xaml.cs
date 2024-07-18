@@ -25,10 +25,13 @@ namespace network_info
             Ipv6.Text = "getting data";
 
             Country4.Text = "getting data";
-            Isp4.Text = "getting data";
-
             Country6.Text = "getting data";
+
+            Isp4.Text = "getting data";
             Isp6.Text = "getting data";
+
+            Vpn4.Text = "getting data";
+            Vpn6.Text = "getting data";
 
             versionStatus.Text = await UpdaterFunction();
             Ipv4Local.Text = await GetLocalIPv4();
@@ -41,22 +44,26 @@ namespace network_info
             {
                 Country4.Text = await GetCountry(Ipv4.Text);
                 Isp4.Text = await GetIsp(Ipv4.Text);
+                Vpn4.Text = await GetVpn(Ipv4.Text);
             }
             else
             {
                 Country4.Text = "unknown";
                 Isp4.Text = "unknown";
+                Vpn4.Text = "unknown";
             }
 
             if (ipv6avaible)
             {
                 Country6.Text = await GetCountry(Ipv6.Text);
                 Isp6.Text = await GetIsp(Ipv6.Text);
+                Vpn6.Text = await GetVpn(Ipv6.Text);
             }
             else
             {
                 Country6.Text = "unknown";
                 Isp6.Text = "unknown";
+                Vpn6.Text = "unknown";
             }
         }
         public async Task<string> UpdaterFunction()
@@ -172,6 +179,14 @@ namespace network_info
         public async Task<string> GetIsp(string ip)
         {
             string url = $"http://ip-api.com/line/{ip}?fields=isp";
+
+            string response = await MakeWebRequest(url);
+
+            return response;
+        }
+        public async Task<string> GetVpn(string ip)
+        {
+            string url = $"http://ip-api.com/line/{ip}?fields=proxy";
 
             string response = await MakeWebRequest(url);
 
