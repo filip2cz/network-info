@@ -70,7 +70,7 @@ namespace network_info
         {
             Debug.WriteLine("Checking version from server");
 
-            string yourVersion = "3";
+            string yourVersion = AppInfo.BuildString;
             string latestVersion = yourVersion;
 
             latestVersion = await MakeWebRequest("https://raw.githubusercontent.com/filip2cz/network-info/main/ver");
