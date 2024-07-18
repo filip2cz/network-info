@@ -81,7 +81,7 @@ namespace network_info
             }
             else if (latestVersion == "unknown")
             {
-                return "Failed to check updates.";
+                return "Failed to check for updates.";
             }
             else
             {
