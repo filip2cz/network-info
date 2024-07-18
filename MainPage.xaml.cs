@@ -70,21 +70,18 @@ namespace network_info
         {
             Debug.WriteLine("Checking version from server");
 
-            int yourVersion = 3;
-            int latestVersion = yourVersion;
-            using (WebClient client = new WebClient())
-            {
-                try
-                {
-                    latestVersion = Int32.Parse(client.DownloadString("https://raw.githubusercontent.com/filip2cz/network-info/main/ver"));
-                }
-                catch (Exception)
-                {
-                }
-            }
+            string yourVersion = "3";
+            string latestVersion = yourVersion;
+
+            latestVersion = await MakeWebRequest("https://raw.githubusercontent.com/filip2cz/network-info/main/ver");
+
             if (yourVersion == latestVersion)
             {
                 return "You have latest version.";
+            }
+            else if (latestVersion == "unknown")
+            {
+                return "Failed to check updates.";
             }
             else
             {
