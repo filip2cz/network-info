@@ -206,6 +206,7 @@ namespace network_info
                     }
                 }
             }
+            response = response.Replace("\n", "").Replace("\r", "");
             return response;
         }
     }
