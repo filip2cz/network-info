@@ -167,7 +167,7 @@ namespace network_info
         }
         public async Task<string> GetCountry(string ip)
         {
-            string url = $"http://ip-api.com/line/{ip}?fields=country";
+            string url = $"https://ip-api.com/line/{ip}?fields=country";
 
             string response = await MakeWebRequest(url);
 
@@ -175,7 +175,7 @@ namespace network_info
         }
         public async Task<string> GetIsp(string ip)
         {
-            string url = $"http://ip-api.com/line/{ip}?fields=isp";
+            string url = $"https://ip-api.com/line/{ip}?fields=isp";
 
             string response = await MakeWebRequest(url);
 
@@ -183,7 +183,7 @@ namespace network_info
         }
         public async Task<string> GetVpn(string ip)
         {
-            string url = $"http://ip-api.com/line/{ip}?fields=proxy";
+            string url = $"https://ip-api.com/line/{ip}?fields=proxy";
 
             string response = await MakeWebRequest(url);
 
