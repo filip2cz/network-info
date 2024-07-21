@@ -8,7 +8,7 @@
     Title="network_info">
 
     <ShellContent
-        Title=""
+        Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
