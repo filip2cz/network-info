@@ -195,11 +195,11 @@ namespace network_info
             int i = 0;
             while (i < 3)
             {
-                using (HttpClient client = new HttpClient())
+                using (WebClient client = new WebClient())
                 {
                     try
                     {
-                        response = await client.GetStringAsync(url);
+                        response = client.DownloadString(url);
                         i = 3;
                     }
                     catch (Exception ex)
