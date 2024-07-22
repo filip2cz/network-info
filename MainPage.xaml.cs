@@ -231,13 +231,14 @@ namespace network_info
         public async Task<string> MakeWebRequest(string url)
         {
             string response = string.Empty;
-            int i = 2;
+            int i = 0;
             while (i < 3)
             {
                 using (WebClient client = new WebClient())
                 {
                     try
                     {
+                        // to do https://stackoverflow.com/questions/1789627/how-to-change-the-timeout-on-a-net-webclient-object
                         response = client.DownloadString(url);
                         i = 3;
                     }
