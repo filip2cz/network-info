@@ -13,6 +13,7 @@ namespace network_info
         public MainPage()
         {
             InitializeComponent();
+
             RefreshInfo();
         }
         private void RefreshButton_Clicked(object sender, EventArgs e)
@@ -33,38 +34,76 @@ namespace network_info
             Vpn4.Text = "getting data";
             Vpn6.Text = "getting data";
 
-            versionStatus.Text = await UpdaterFunction();
-            Ipv4Local.Text = await GetLocalIPv4();
-            Ipv6Local.Text = await GetLocalIPv6();
+            string versionString = "";
+            string Ipv4LocalString = "";
+            string Ipv6LocalString = "";
+            string Ipv4String = "";
+            string Ipv6String = "";
+            string Country4String = "";
+            string Country6String = "";
+            string Isp4String = "";
+            string Isp6String = "";
+            string Vpn4String = "";
+            string Vpn6String = "";
 
-            Ipv4.Text = await GetIPv4();
-            Ipv6.Text = await GetIPv6();
+            // Díky Rakočević za návod na await Task.Run
+            await Task.Run(async() =>
+            {
+                versionString = await UpdaterFunction();
+                Ipv4LocalString = await GetLocalIPv4();
+                Ipv6LocalString = await GetLocalIPv6();
 
-            if (ipv4avaible)
-            {
-                Country4.Text = await GetCountry(Ipv4.Text);
-                Isp4.Text = await GetIsp(Ipv4.Text);
-                Vpn4.Text = await GetVpn(Ipv4.Text);
-            }
-            else
-            {
-                Country4.Text = "unknown";
-                Isp4.Text = "unknown";
-                Vpn4.Text = "unknown";
-            }
+                Ipv4String = await GetIPv4();
 
-            if (ipv6avaible)
+                Ipv6String = await GetIPv6();
+            });
+
+            versionStatus.Text = versionString;
+            Ipv4Local.Text = Ipv4LocalString;
+            Ipv6Local.Text = Ipv6LocalString;
+
+            await Task.Run(async () =>
             {
-                Country6.Text = await GetCountry(Ipv6.Text);
-                Isp6.Text = await GetIsp(Ipv6.Text);
-                Vpn6.Text = await GetVpn(Ipv6.Text);
-            }
-            else
-            {
-                Country6.Text = "unknown";
-                Isp6.Text = "unknown";
-                Vpn6.Text = "unknown";
-            }
+                if (ipv4avaible)
+                {
+                    Country4String = await GetCountry(Ipv4String);
+                    Isp4String = await GetIsp(Ipv4String);
+                    Vpn4String = await GetVpn(Ipv4String);
+                }
+                else
+                {
+                    Country4String = "unknown";
+                    Isp4String = "unknown";
+                    Vpn4String = "unknown";
+                }
+
+                if (ipv6avaible)
+                {
+                    Country6String = await GetCountry(Ipv6String);
+                    Isp6String = await GetIsp(Ipv6String);
+                    Vpn6String = await GetVpn(Ipv6String);
+                }
+                else
+                {
+                    Country6String = "unknown";
+                    Isp6String = "unknown";
+                    Vpn6String = "unknown";
+                }
+            });
+
+            Ipv4.Text = Ipv4String;
+            Ipv6.Text = Ipv6String;
+
+            Country4.Text = Country4String;
+            Country6.Text = Country6String;
+
+            Isp4.Text = Isp4String;
+            Isp6.Text = Isp6String;
+
+            Vpn4.Text = Vpn4String;
+            Vpn6.Text = Vpn6String;
+
+            Debug.WriteLine("Refreshing done");
         }
         public async Task<string> UpdaterFunction()
         {
@@ -192,7 +231,7 @@ namespace network_info
         public async Task<string> MakeWebRequest(string url)
         {
             string response = string.Empty;
-            int i = 0;
+            int i = 2;
             while (i < 3)
             {
                 using (WebClient client = new WebClient())
