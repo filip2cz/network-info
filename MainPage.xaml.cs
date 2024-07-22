@@ -47,60 +47,69 @@ namespace network_info
             string Vpn6String = "";
 
             // Díky Rakočević za návod na await Task.Run
-            await Task.Run(async() =>
+            await Task.Run(async () =>
             {
-                versionString = await UpdaterFunction();
                 Ipv4LocalString = await GetLocalIPv4();
                 Ipv6LocalString = await GetLocalIPv6();
-
-                Ipv4String = await GetIPv4();
-
-                Ipv6String = await GetIPv6();
             });
-
-            versionStatus.Text = versionString;
             Ipv4Local.Text = Ipv4LocalString;
             Ipv6Local.Text = Ipv6LocalString;
 
-            await Task.Run(async () =>
+            await Task.Run(async() =>
             {
-                if (ipv4avaible)
+                versionString = await UpdaterFunction();
+
+                Ipv4String = await GetIPv4();
+            });
+
+            versionStatus.Text = versionString;
+            Ipv4.Text = Ipv4String;
+
+            if (ipv4avaible)
+            {
+                await Task.Run(async () =>
                 {
                     Country4String = await GetCountry(Ipv4String);
                     Isp4String = await GetIsp(Ipv4String);
                     Vpn4String = await GetVpn(Ipv4String);
-                }
-                else
-                {
-                    Country4String = "unknown";
-                    Isp4String = "unknown";
-                    Vpn4String = "unknown";
-                }
+                });
+            }
+            else
+            {
+                Country4String = "unknown";
+                Isp4String = "unknown";
+                Vpn4String = "unknown";
+            }
 
-                if (ipv6avaible)
+            Country4.Text = Country4String;
+            Isp4.Text = Isp4String;
+            Vpn4.Text = Vpn4String;
+
+            await Task.Run(async () =>
+            {
+                Ipv6String = await GetIPv6();
+            });
+
+            Ipv6.Text = Ipv6String;
+
+            if (ipv6avaible)
+            {
+                await Task.Run(async () =>
                 {
                     Country6String = await GetCountry(Ipv6String);
                     Isp6String = await GetIsp(Ipv6String);
                     Vpn6String = await GetVpn(Ipv6String);
-                }
-                else
-                {
-                    Country6String = "unknown";
-                    Isp6String = "unknown";
-                    Vpn6String = "unknown";
-                }
-            });
+                });
+            }
+            else
+            {
+                Country6String = "unknown";
+                Isp6String = "unknown";
+                Vpn6String = "unknown";
+            }
 
-            Ipv4.Text = Ipv4String;
-            Ipv6.Text = Ipv6String;
-
-            Country4.Text = Country4String;
             Country6.Text = Country6String;
-
-            Isp4.Text = Isp4String;
             Isp6.Text = Isp6String;
-
-            Vpn4.Text = Vpn4String;
             Vpn6.Text = Vpn6String;
 
             Debug.WriteLine("Refreshing done");
@@ -206,7 +215,7 @@ namespace network_info
         }
         public async Task<string> GetCountry(string ip)
         {
-            string url = $"https://ip-api.com/line/{ip}?fields=country";
+            string url = $"http://ip-api.com/line/{ip}?fields=country";
 
             string response = await MakeWebRequest(url);
 
@@ -214,7 +223,7 @@ namespace network_info
         }
         public async Task<string> GetIsp(string ip)
         {
-            string url = $"https://ip-api.com/line/{ip}?fields=isp";
+            string url = $"http://ip-api.com/line/{ip}?fields=isp";
 
             string response = await MakeWebRequest(url);
 
@@ -222,7 +231,7 @@ namespace network_info
         }
         public async Task<string> GetVpn(string ip)
         {
-            string url = $"https://ip-api.com/line/{ip}?fields=proxy";
+            string url = $"http://ip-api.com/line/{ip}?fields=proxy";
 
             string response = await MakeWebRequest(url);
 
