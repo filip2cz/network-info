@@ -10,7 +10,7 @@
                     <Label Text="Network Info" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                 </Frame>
 
-                <Label Text="Version: 0.3" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
+                <Label Text="versionInfo_placeholder" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0" x:Name="versionInfo"/>
                 <Label Text="" HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0" x:Name="versionStatus"/>
                 <Label Text="This app is still in development, bugs may occur." HorizontalTextAlignment="Start" FontSize="12" Padding="30,5,30,0"/>
 

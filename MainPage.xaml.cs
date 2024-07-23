@@ -14,6 +14,8 @@ namespace network_info
         {
             InitializeComponent();
 
+            versionInfo.Text = $"Version: {AppInfo.VersionString} ({AppInfo.BuildString})";
+
             RefreshInfo();
         }
         private void RefreshButton_Clicked(object sender, EventArgs e)
