@@ -14,7 +14,9 @@ Mobile app, which gives informations about network.
       height="80">](https://github.com/filip2cz/network-info/releases)
 
 ## Acknowledgements
-Thanks [Mikuláš (Ur-Fault)](https://github.com/ur-fault) for help about basic knowlege how to use Xamarin
+
+Thanks to [Mikuláš (Ur-Fault)](https://github.com/ur-fault) for help with basic knowlege how to use Xamarin and async things
+Thanks to https://github.com/rak-ko for help with async things in first MAUI release
 
 Thanks to the people at reddit: [https://www.reddit.com/r/Xamarin/comments/13wrdwp/it_works_in_debug_mode_but_in_release_mode_is/?sort=new](https://www.reddit.com/r/Xamarin/comments/13wrdwp/it_works_in_debug_mode_but_in_release_mode_is/?sort=new)
 
