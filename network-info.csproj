@@ -54,6 +54,7 @@
 	  <ApplicationId>eu.fkomarek.network_info</ApplicationId>
 	  <ApplicationDisplayVersion>0.4</ApplicationDisplayVersion>
 	  <ApplicationVersion>4</ApplicationVersion>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
@@ -71,7 +72,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
